@@ -1,0 +1,14 @@
+Pasos para crear un componente
+
+1 Importar react (opcional)
+2 Crear una Funcion
+3 La funcion debe tener un return
+4 La funcion debe iniciar su nombre con mayúscula
+5 Exportar la funcion
+
+
+-Todos los componentes pueden tener:
+    -props
+    -states
+    -ciclo de vida
+    -metodos del ciclo de vida 

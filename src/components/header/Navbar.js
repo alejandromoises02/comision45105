@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/tienda.png";
 import { styles } from "./Navbar.style";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import NavCategories from "./NavCategories";
+import CartWidget from "./CartWidget";
 
 const Navbar = ({ name }) => {
   return (
@@ -14,7 +14,7 @@ const Navbar = ({ name }) => {
 
       <NavCategories />
 
-      <ShoppingCartIcon color="primary" fontSize="large" />
+      <CartWidget />
     </header>
   );
 };

@@ -12,3 +12,36 @@ Pasos para crear un componente
     -states
     -ciclo de vida
     -metodos del ciclo de vida 
+
+Ciclo de vida
+
+-mount
+    -constructor
+    -render
+    -componentDidMount
+ 
+-update
+    -constructor
+    -render
+    -componentDidUpdate
+
+
+-unmount 
+    -componentWillUnmount
+
+-UseEffect 
+
+//Este bloque de codigo se ejecuta solo en el montaje del componente
+useEffect(() => {
+    //bloque de codigo
+  },[]);
+
+//Este bloque de codigo se ejecuta en el montaje y cada actualizacion
+useEffect(() => {
+    //bloque de codigo
+  });
+
+  //Este bloque de codigo se ejecuta en el montaje y cada actualizacion siempre que los valores del array se modifiquen
+useEffect(() => {
+    //bloque de codigo
+  },[valores]);

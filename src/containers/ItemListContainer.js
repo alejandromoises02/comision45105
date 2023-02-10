@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Itemcount from "../components/ItemCount";
+import Lista from "./Lista";
 
 const initialProducts = [
   { name: "manzana", id: 0, price: 500, stock: 10 },
@@ -16,15 +17,35 @@ const queryProducts = new Promise((res, rej) => {
 
 export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    queryProducts
+    /*queryProducts
       .then((data) => {
         setProducts(data);
       })
       .catch((err) => {
         console.error(err);
-      });
+      });*/
+
+    /*fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => console.log(json))
+      .catch((e) => {
+        console.log(e);
+      });*/
+
+    const getProducts = async () => {
+      try {
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
+        setProducts(data);
+      } catch {
+        setError(true);
+      }
+    };
+
+    getProducts();
   }, []);
 
   const onAdd = (count) => {
@@ -36,14 +57,16 @@ export const ItemListContainer = ({ greeting }) => {
       <h1>{greeting}</h1>
       <Itemcount stock={5} onAdd={onAdd} />
 
-      {products.length ? (
+      {!error ? (
         <>
-          {products.map((product) => (
-            <h1 key={product.id}>{product.name}</h1>
-          ))}
+          {products.length ? (
+            <Lista products={products} />
+          ) : (
+            <h1>Cargando...</h1>
+          )}
         </>
       ) : (
-        <h1>Cargando...</h1>
+        <h1>Hubo un error</h1>
       )}
     </>
   );

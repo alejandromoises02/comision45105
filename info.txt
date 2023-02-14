@@ -45,3 +45,43 @@ useEffect(() => {
 useEffect(() => {
     //bloque de codigo
   },[valores]);
+
+
+  XHR - Fetch-->thencatch-asyncawait-axios
+
+  http
+
+  cliente - servidor
+  client - server
+  request - response
+  a - b
+
+request-client
+URL
+Verbo-metodo(GET POST PUT DELETE)
+headers
+body
+
+server
+codigo - status(100-200-300-400-500)
+headers
+body
+
+AJAX - Async js and XML
+fetch(url)
+
+fetch("https://fakestoreapi.com/products")
+  .then((data) => data.json())
+  .then((resp) => console.log(resp));
+
+fetch(url,{
+  method : 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body:JSON.stringify({nombre:'juan'})
+})
+
+
+A-----APIS-------B
+

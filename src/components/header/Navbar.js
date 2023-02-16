@@ -3,18 +3,19 @@ import logo from "../../assets/tienda.png";
 import { styles } from "./Navbar.style";
 import NavCategories from "./NavCategories";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ name }) => {
   return (
     <header style={styles.container}>
-      <a style={styles.imagenes} href="">
+      <Link style={styles.imagenes} to={"/"}>
         <img style={styles.imagenes} src={logo} alt="tienda online" />
-      </a>
+      </Link>
       <h1>Bienvenido {name}</h1>
-
       <NavCategories />
-
-      <CartWidget />
+      <Link to={"/cart"}>
+        <CartWidget />
+      </Link>
     </header>
   );
 };

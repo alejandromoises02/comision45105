@@ -4,6 +4,7 @@ import ItemListContainer from "./containers/ItemListContainer";
 import { ItemDetailContainer } from "./containers/ItemDetailContainer";
 import Cart from "./containers/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UsersList from './UsersList'
 
 const App = () => {
   const userName = "Alejandro";
@@ -11,7 +12,14 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+     <UsersList /> 
+    </>
+  );
+};
+
+export default App;
+
+/*<BrowserRouter>
         <Navbar name={userName} />
         <Routes>
           <Route path="/" element={<ItemListContainer greeting={greeting} />} />
@@ -27,13 +35,6 @@ const App = () => {
           />
 
           <Route path="/cart" element={<Cart />} />
-
-
         </Routes>
-      </BrowserRouter>
-    </>
-  );
-};
-
-export default App;
+      </BrowserRouter>*/
 

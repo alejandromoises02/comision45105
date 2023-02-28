@@ -15,10 +15,6 @@ const ItemCount = ({ onAdd, stock = 5 }) => {
     }
   };
 
-  const handlerClickAddToCart = () => {
-    onAdd(count);
-  };
-
   return (
     <div style={styles.container}>
       <div style={styles.containerButtons}>
@@ -30,7 +26,7 @@ const ItemCount = ({ onAdd, stock = 5 }) => {
           +
         </button>
       </div>
-      <button style={styles.buttonAdd} onClick={() => handlerClickAddToCart()}>
+      <button style={styles.buttonAdd} onClick={() => onAdd(count)}>
         Agregar al carrito
       </button>
     </div>

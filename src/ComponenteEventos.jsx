@@ -7,6 +7,7 @@ const ComponenteEventos = () => {
     console.log('click en button');
     //console.log(event.target);
   };
+  handlerClick();
 
   const handlerChange = (event) => {
     console.log(event.target);

@@ -1,27 +1,61 @@
-import { style } from "@mui/system";
+import React, { useState, useContext } from "react";
+import ItemCount from "../components/ItemCount";
+import { Link } from "react-router-dom";
+import { CustomContext } from "../context/CustomContext";
 
 const ItemDetail = ({ product }) => {
+  const [isPressedButton, setIsPressedButton] = useState(false);
+  const { addProduct } = useContext(CustomContext);
+
+  const onAdd = (count) => {
+    setIsPressedButton(true);
+    addProduct(product, count);
+  };
+
   return (
-    <div style={styles.container}>
-      <img alt={product.title} src={product.image} style={styles.image} />
-      <div>
-        <h1>{product.title}</h1>
-        <span>{product.description}</span>
-        <h2>{product.price}</h2>
+    <div style={styles.infoContainer}>
+      <img style={styles.img} src={product.image} alt={product.title} />
+      <div style={styles.infoTextContainer}>
+        <div style={styles.infoText}>
+          <h1>{product.title}</h1>
+          <span>${product.price}</span>
+          <p>{product.description}</p>
+        </div>
+
+        {isPressedButton ? (
+          <Link to="/cart">
+            <button>Finalizar compra</button>
+          </Link>
+        ) : (
+          <ItemCount onAdd={onAdd} />
+        )}
       </div>
     </div>
   );
 };
 
-export default ItemDetail;
-
 const styles = {
-  container: {
+  infoContainer: {
     display: "flex",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
-  image: {
-    width: "20%",
+  img: {
+    width: "40%",
+    aspectRatio: "1/1",
+  },
+  infoTextContainer: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  infoText: {
+    padding: "10px",
+    marging: "10px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
   },
 };
+
+export default ItemDetail;

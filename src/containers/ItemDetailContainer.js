@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import {db} from "./../firebase/firebase";
+import { doc, getDoc, collection } from "firebase/firestore";
 
 
 export const ItemDetailContainer = ( ) => {
@@ -10,7 +12,18 @@ export const ItemDetailContainer = ( ) => {
 
   useEffect(() => {
 
-    const getProduct = async () => {
+    const productsCollection = collection(db,'products');
+    const refDoc = doc(productsCollection,id)
+    getDoc(refDoc).then(
+      (data)=>{
+        console.log({
+          id:data.id,
+          ...data.data(),
+        });
+      }
+    )
+
+    /*const getProduct = async () => {
       try {
         const res = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await res.json();
@@ -20,7 +33,7 @@ export const ItemDetailContainer = ( ) => {
       }
     };
 
-    getProduct();
+    getProduct();*/
   }, []);
 
   return (

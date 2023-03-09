@@ -21,7 +21,6 @@ const ItemDetail = ({ product }) => {
           <span>${product.price}</span>
           <p>{product.description}</p>
         </div>
-
         {isPressedButton ? (
           <Link to="/cart">
             <button>Finalizar compra</button>

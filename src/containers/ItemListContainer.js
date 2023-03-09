@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import {db} from "./../firebase/firebase";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 export const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
@@ -8,7 +10,30 @@ export const ItemListContainer = ({ greeting }) => {
   const { name } = useParams();
 
   useEffect(() => {
-    const URL = name
+    const productsCollection = collection(db,'products');
+    const q = query(productsCollection, where('category','==','jewelery'));
+
+    getDocs(q).then(
+      (data)=>{
+        const list = data.docs.map(product => {
+          return {
+            ...product.data(),
+            id: product.id,
+          }
+        });
+        setProducts(list);
+      }
+    )
+    .catch(()=>{ setError(true);})
+
+
+
+
+
+
+
+
+    /*const URL = name
       ? `https://fakestoreapi.com/products/category/${name}`
       : "https://fakestoreapi.com/products";
     const getProducts = async () => {
@@ -21,7 +46,7 @@ export const ItemListContainer = ({ greeting }) => {
       }
     };
 
-    getProducts();
+    getProducts();*/
   }, [name]);
 
   return (

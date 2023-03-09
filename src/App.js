@@ -9,7 +9,6 @@ import { CustomProvider } from "./context/CustomContext";
 const App = () => {
   const userName = "Alejandro";
   const greeting = "Las Mejores Ofertas";
-
   return (
     <>
       <BrowserRouter>

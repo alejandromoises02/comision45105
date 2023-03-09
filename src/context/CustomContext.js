@@ -16,7 +16,7 @@ export const CustomProvider = ({ children }) => {
 
   const addProduct = (product, quantity) => {
     if (isInCart(product.id)) {
-      //TODO
+      //TODO nota: piensa en lo que hace un .map();
     } else {
       setCart([...cart, { ...product, quantity }]);
       //setQty(qty + quantity)
@@ -39,7 +39,7 @@ export const CustomProvider = ({ children }) => {
   };
 
   return (
-    <CustomContext.Provider value={{ cart, addProduct, removeProduct, clear }}>
+    <CustomContext.Provider value={{ cart, qty, addProduct, removeProduct, clear }}>
       {children}
     </CustomContext.Provider>
   );

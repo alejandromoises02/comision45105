@@ -17,7 +17,7 @@ export const ItemListContainer = ({ greeting }) => {
       (data)=>{
         const list = data.docs.map(product => {
           return {
-            ...product.data(),
+            ...product.data(), 
             id: product.id,
           }
         });

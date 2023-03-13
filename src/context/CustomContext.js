@@ -4,30 +4,34 @@ export const CustomContext = createContext();
 
 export const CustomProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [qty, setQty] = useState(0);
+  const [totals, setTotals] = useState({ qty: 0, total: 0 });
 
   useEffect(() => {
     let qtyInitial = 0;
+    let total = 0;
     cart.forEach((product) => {
       qtyInitial += product.quantity;
+      total += product.quantity * product.price;
     });
-    setQty(qtyInitial);
+    setTotals({ qty: qtyInitial, total: total });
   }, [cart]);
 
   const addProduct = (product, quantity) => {
     if (isInCart(product.id)) {
-      //TODO nota: piensa en lo que hace un .map();
+      setCart(
+        cart.map((productCart) => {
+          if (productCart.id === product.id)
+            return { ...productCart, quantity };
+          return productCart;
+        })
+      );
     } else {
       setCart([...cart, { ...product, quantity }]);
-      //setQty(qty + quantity)
     }
   };
 
-  const removeProduct = (id) => {
-    const product = cart.find((product) => product.id === id);
+  const removeProduct = (id) =>
     setCart(cart.filter((product) => product.id !== id));
-    //setQty(qty - product.quantity)
-  };
 
   const isInCart = (id) => {
     return cart.some((product) => product.id === id);
@@ -35,11 +39,12 @@ export const CustomProvider = ({ children }) => {
 
   const clear = () => {
     setCart([]);
-    //setQty(0)
   };
 
   return (
-    <CustomContext.Provider value={{ cart, qty, addProduct, removeProduct, clear }}>
+    <CustomContext.Provider
+      value={{ cart, totals, addProduct, removeProduct, clear }}
+    >
       {children}
     </CustomContext.Provider>
   );

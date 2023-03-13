@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { CustomContext } from "../../context/CustomContext";
 
 export const CartWidget = () => {
+  const { totals } = useContext(CustomContext);
   return (
-    <div style={{display:'flex'}}>
+    <div style={{ display: "flex" }}>
       <ShoppingCartIcon color="primary" fontSize="large" />
-      <p>4</p>
+      {totals.qty > 0 && <p>{totals.qty}</p>}
     </div>
   );
 };

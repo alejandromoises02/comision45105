@@ -16,12 +16,15 @@ export const ItemDetailContainer = ( ) => {
     const refDoc = doc(productsCollection,id)
     getDoc(refDoc).then(
       (data)=>{
-        console.log({
+        setProduct({
           id:data.id,
           ...data.data(),
         });
       }
     )
+    .finally(()=>{
+      setLoading(false);
+    })
 
     /*const getProduct = async () => {
       try {

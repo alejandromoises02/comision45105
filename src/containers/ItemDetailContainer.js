@@ -22,7 +22,7 @@ export const ItemDetailContainer = ( ) => {
         });
       }
     )
-    .finally(()=>{
+    .finally(()=>{ 
       setLoading(false);
     })
 

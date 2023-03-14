@@ -6,6 +6,9 @@ export const CustomProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [totals, setTotals] = useState({ qty: 0, total: 0 });
 
+
+
+
   useEffect(() => {
     let qtyInitial = 0;
     let total = 0;
@@ -15,6 +18,10 @@ export const CustomProvider = ({ children }) => {
     });
     setTotals({ qty: qtyInitial, total: total });
   }, [cart]);
+
+
+
+  
 
   const addProduct = (product, quantity) => {
     if (isInCart(product.id)) {

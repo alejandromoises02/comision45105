@@ -10,6 +10,8 @@ export const ItemListContainer = ({ greeting }) => {
   const { name } = useParams();
 
   useEffect(() => {
+
+
     const productsCollection = collection(db, "products");
     const q = name
       ? query(productsCollection, where("category", "==", name))

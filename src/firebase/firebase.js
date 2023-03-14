@@ -12,3 +12,31 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+
+//script para subir los datos de la api fake store en firebase
+
+/*const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
+const db = firestore.collection("products");
+
+fetch("https://fakestoreapi.com/products")
+  .then((res) => res.json())
+  .then((json) => {
+    console.log(json);
+    json.forEach((producto) => {
+      const { category, description, image, price, title } = producto;
+      db.doc().set({ category, description, image, price, title, stock: 50 });
+    });
+  });
+*/

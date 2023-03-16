@@ -85,3 +85,11 @@ fetch(url,{
 
 A-----APIS-------B
 
+DONT!!
+-Codigo comentado
+-Abuso de comentarios
+-Logs sueltos
+-Archivos o componentes sueltos
+-Orden en carpetas
+-Evitar componentes pasamanos
+-Filtrar en front

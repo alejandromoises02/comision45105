@@ -15,6 +15,9 @@ export const db = getFirestore(app);
 
 
 //script para subir los datos de la api fake store en firebase
+//primero en el html debe ir esto antes del link del js
+/*<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>*/
 
 /*const firebaseConfig = {
   apiKey: "",
